@@ -1,1 +1,29 @@
-{{ content }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Egg Clicker</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: yellow;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .egg {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .egg:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <a href="https://your-link.com">
+    <img src="/assets/egg.png" alt="Click the egg" class="egg" width="200">
+  </a>
+</body>
+</html>
