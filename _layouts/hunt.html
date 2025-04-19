@@ -61,6 +61,7 @@
     const gridHeight = grid.offsetHeight;
 
     eggs.forEach((egg, i) => {
+      egg.style.width = (Math.floor(gridWidth / 4) - 20) + 'px';
       const col = i % 4;
       const row = Math.floor(i / 4);
 
