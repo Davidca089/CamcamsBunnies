@@ -169,6 +169,24 @@
       data-image="{{ '/assets/photo' | append: 12 | append: '.jpg' | relative_url }}"
       data-message="Conejita moment #{{ 12 }}: You are my sunshine 🌼"
     />
+    <img
+      src="{{ '/assets/egg.png' | relative_url }}"
+      class="egg"
+      data-image="{{ '/assets/photo' | append: 13 | append: '.jpg' | relative_url }}"
+      data-message="Conejita moment #{{ 13 }}: You are my sunshine 🌼"
+    />
+    <img
+      src="{{ '/assets/egg.png' | relative_url }}"
+      class="egg"
+      data-image="{{ '/assets/photo' | append: 14 | append: '.jpg' | relative_url }}"
+      data-message="Conejita moment #{{ 14 }}: You are my sunshine 🌼"
+    />
+    <img
+      src="{{ '/assets/egg.png' | relative_url }}"
+      class="egg"
+      data-image="{{ '/assets/photo' | append: 15 | append: '.jpg' | relative_url }}"
+      data-message="Conejita moment #{{ 15 }}: You are my sunshine 🌼"
+    />
   </div>
 
   <!-- Modal -->
@@ -196,7 +214,7 @@
       egg.style.width = Math.floor(gridWidth / 8) + 'px';
 
       // Grid positioning
-      const col = i % 4;
+      const col = i % 5;
       const row = Math.floor(i / 4);
       const x = (((col - 1.5) * (gridWidth / 4)) - 140) + 'px';
       const y = (((row - 1) * (gridHeight / 3)) - 100) + 'px';
