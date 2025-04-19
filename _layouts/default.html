@@ -2,28 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Egg Clicker</title>
+  <title>Camcam's Paques</title>
   <style>
     body {
-      margin: 0;
-      background-color: yellow;
-      height: 100vh;
+      background-color: #fff8c6;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
     }
-    .egg {
+
+    h1 {
+      color: #ff69b4;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    .chest {
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.4s ease;
+      width: 200px;
     }
-    .egg:hover {
-      transform: scale(1.1);
+
+    .chest:active {
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <a href="https://your-link.com">
-            <img src="{{ site.baseurl}}/assets/egg.png" alt="Click the egg" class="egg" width="600">
-  </a>
+
+  <h1>Time to look for eggs, conejita 🐣</h1>
+  
+  <img id="chest" class="chest" src="/assets/chest-closed.png" alt="Closed Chest">
+
+  <script>
+    const chest = document.getElementById('chest');
+
+    chest.addEventListener('click', () => {
+      chest.src = '/assets/chest-open.png'; // Swap to open chest image
+      chest.style.transform = 'scale(1.1)';
+      
+      setTimeout(() => {
+        window.location.href = '/hunt.html'; // Redirect to egg hunt page
+      }, 3000); // Small delay for the animation
+    });
+  </script>
+
 </body>
 </html>
+
