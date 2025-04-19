@@ -36,13 +36,13 @@
 
   <h1>Time to look for eggs, conejita 🐣</h1>
   
-  <img id="chest" class="chest" src="/assets/chest-closed.png" alt="Closed Chest">
+        <img id="chest" class="chest" src="{{ site.baseurl }}/assets/chest-closed.png" alt="Closed Chest">
 
   <script>
     const chest = document.getElementById('chest');
 
     chest.addEventListener('click', () => {
-      chest.src = '/assets/chest-open.png'; // Swap to open chest image
+        chest.src = '{{ site.baseurl }}/assets/chest-open.png'; // Swap to open chest image
       chest.style.transform = 'scale(1.1)';
       
       setTimeout(() => {
