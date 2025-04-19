@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Camcam's Paques</title>
-  <style>
-    body {
-      background-color: #fff8c6;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <title>Camcam's Paques</title>
+        <style>
+        body {
+        background-color: #fff8c6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        }
 
-    h1 {
-      color: #ff69b4;
-      font-size: 2em;
-      margin-bottom: 30px;
-    }
+        h1 {
+        color: #ff69b4;
+        font-size: 2em;
+        margin-bottom: 30px;
+        }
 
-    .chest {
-      cursor: pointer;
-      transition: transform 0.4s ease;
-      width: 400px;
-    }
+        .chest {
+        cursor: pointer;
+        transition: transform 0.4s ease;
+        width: 400px;
+        }
 
-    .chest:active {
-      transform: scale(1.05);
-    }
-  </style>
-</head>
-<body>
+        .chest:active {
+        transform: scale(1.05);
+        }
+        </style>
+    </head>
+    <body>
 
-  <h1>Time to look for eggs, conejita 🐣</h1>
-  
+        <h2>Time to look for eggs, conejita 🐣</h2>
+
         <img id="chest" class="chest" src="{{ site.baseurl }}/assets/chest-closed.png" alt="Closed Chest">
 
-  <script>
-    const chest = document.getElementById('chest');
+        <script>
+        const chest = document.getElementById('chest');
 
-    chest.addEventListener('click', () => {
-        chest.src = '{{ site.baseurl }}/assets/chest-open.png'; // Swap to open chest image
-      chest.style.transform = 'scale(1.5)';
-      
-      setTimeout(() => {
-        window.location.href = '/hunt.html'; // Redirect to egg hunt page
-      }, 1000); // Small delay for the animation
-    });
-  </script>
+        chest.addEventListener('click', () => {
+            chest.src = '{{ site.baseurl }}/assets/chest-open.png'; // Swap to open chest image
+            chest.style.transform = 'scale(1.5)';
 
-</body>
+            setTimeout(() => {
+                window.location.href = '/hunt.html'; // Redirect to egg hunt page
+            }, 1000); // Small delay for the animation
+        });
+        </script>
+
+    </body>
 </html>
 
