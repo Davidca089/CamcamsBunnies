@@ -1,241 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ page.title }}</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ page.title }}</title>
+        <style>
+        * {
+        box-sizing: border-box;
+        }
 
-    body {
-      background-color: #fff8c6;
-      margin: 0;
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Segoe UI', sans-serif;
-    }
+        body {
+        background-color: #fff8c6;
+        margin: 0;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Segoe UI', sans-serif;
+        }
 
-    .grid {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      place-items: center;
-    }
+        .grid {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        place-items: center;
+        }
 
-    .egg {
-      opacity: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.2);
-      transition: all 1s ease;
-      cursor: pointer;
-    }
+        .egg {
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.2);
+        transition: all 1s ease;
+        cursor: pointer;
+        }
 
-    .egg.visible {
-      opacity: 1;
-      transform: translate(var(--x), var(--y)) scale(1);
-    }
+        .egg.visible {
+        opacity: 1;
+        transform: translate(var(--x), var(--y)) scale(1);
+        }
 
-    /* Modal styles */
-    .modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-    }
+        /* Modal styles */
+        .modal {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        }
 
-    .modal-content {
-      background-color: white;
-      padding: 20px;
-      border-radius: 20px;
-      max-width: 30%;
-      max-height: 90%;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      position: relative;
-    }
+        .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
+        max-width: 30%;
+        max-height: 90%;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        position: relative;
+        }
 
-    .modal-content img {
-      max-width: 350px;
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 15px;
-    }
+        .modal-content img {
+        max-width: 350px;
+        width: 100%;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        }
 
-    .modal-content p {
-      font-size: 1.1em;
-      color: #444;
-    }
+        .modal-content p {
+        font-size: 1.1em;
+        color: #444;
+        }
 
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 1.8em;
-      color: #888;
-      cursor: pointer;
-    }
+        .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.8em;
+        color: #888;
+        cursor: pointer;
+        }
 
-    .close:hover {
-      color: #333;
-    }
-  </style>
-</head>
-<body>
+        .close:hover {
+        color: #333;
+        }
+        </style>
+    </head>
+    <body>
 
-  <div class="grid" id="eggGrid">
-    <img
-      src="{{ '/assets/pink_egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 1 | append: '.jpeg' | relative_url }}"
-      data-message="12 April 2024: It's been almost a year since we took this one and I still don't know if you are the one 
+        <div class="grid" id="eggGrid">
+            <img
+                src="{{ '/assets/pink_egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 1 | append: '.jpeg' | relative_url }}"
+                data-message="12 April 2024: It's been almost a year since we took this one and I still don't know if you are the one 
                 on the right, or on the left, UNBELIVABLE"
-    />
-    <img
-      src="{{ '/assets/egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 2 | append: '.jpeg' | relative_url }}"
-      data-message="6 May 2024: I really hope you remember you still owe me the last 3 Starwars movies ;)
+            />
+            <img
+                src="{{ '/assets/egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 2 | append: '.jpeg' | relative_url }}"
+                data-message="6 May 2024: Insane opportunity for me to remind you that I 
+                DONT forget we still need to watch the last 3 Starwars ;)
                 (We will need at least two liters of Soju tho, ONLY WAY TO MAKE THEM BAREBLE IM AFRIAD)"
-    />
-    <img
-      src="{{ '/assets/blue_egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 3 | append: '.jpeg' | relative_url }}"
-      data-message="Conejita moment #{{ 3 }}: You are my sunshine 🌼"
-    />
-    <img
-      src="{{ '/assets/blue_egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 4 | append: '.jpeg' | relative_url }}"
-      data-message="Conejita moment #{{ 4 }}: You are my sunshine 🌼"
-    />
-    <img
-      src="{{ '/assets/pink_egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 5 | append: '.jpeg' | relative_url }}"
-      data-message="Conejita moment #{{ 5 }}: You are my sunshine 🌼"
-    />
-    <img
-      src="{{ '/assets/egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 6 | append: '.jpeg' | relative_url }}"
-      data-message="Conejita moment #{{ 6 }}: You are my sunshine 🌼"
-    />
-    <img
-      src="{{ '/assets/egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 7 | append: '.jpeg' | relative_url }}"
-      data-message="Conejita moment #{{ 7 }}: You are my sunshine 🌼"
-    />
-    <img
-      src="{{ '/assets/pink_egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 8 | append: '.jpeg' | relative_url }}"
-      data-message="Conejita moment #{{ 8 }}: You are my sunshine 🌼"
-    />
-    <img
-      src="{{ '/assets/egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 9 | append: '.jpeg' | relative_url }}"
-      data-message="Conejita moment #{{ 9 }}: You are my sunshine 🌼"
-    />
-    <img
-      src="{{ '/assets/blue_egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 10 | append: '.jpeg' | relative_url }}"
-      data-message="Conejita moment #{{ 10 }}: You are my sunshine 🌼"
-    />
-    <img
-      src="{{ '/assets/pink_egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 11 | append: '.jpeg' | relative_url }}"
-      data-message="Conejita moment #{{ 11 }}: You are my sunshine 🌼"
-    />
-    <img
-      src="{{ '/assets/egg.png' | relative_url }}"
-      class="egg"
-      data-image="{{ '/assets/photo' | append: 12 | append: '.jpeg' | relative_url }}"
-      data-message="Conejita moment #{{ 12 }}: You are my sunshine 🌼"
-    />
-  </div>
+            />
+            <img
+                src="{{ '/assets/blue_egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 3 | append: '.jpeg' | relative_url }}"
+                data-message="15 June 2024: CANNOT let you forget the best day of the year actually,
+                "
+            />
+            <img
+                src="{{ '/assets/blue_egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 4 | append: '.jpeg' | relative_url }}"
+                data-message="Conejita moment #{{ 4 }}: You are my sunshine 🌼"
+            />
+            <img
+                src="{{ '/assets/pink_egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 5 | append: '.jpeg' | relative_url }}"
+                data-message="Conejita moment #{{ 5 }}: You are my sunshine 🌼"
+            />
+            <img
+                src="{{ '/assets/egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 6 | append: '.jpeg' | relative_url }}"
+                data-message="Conejita moment #{{ 6 }}: You are my sunshine 🌼"
+            />
+            <img
+                src="{{ '/assets/egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 7 | append: '.jpeg' | relative_url }}"
+                data-message="Conejita moment #{{ 7 }}: You are my sunshine 🌼"
+            />
+            <img
+                src="{{ '/assets/pink_egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 8 | append: '.jpeg' | relative_url }}"
+                data-message="Conejita moment #{{ 8 }}: You are my sunshine 🌼"
+            />
+            <img
+                src="{{ '/assets/egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 9 | append: '.jpeg' | relative_url }}"
+                data-message="Conejita moment #{{ 9 }}: You are my sunshine 🌼"
+            />
+            <img
+                src="{{ '/assets/blue_egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 10 | append: '.jpeg' | relative_url }}"
+                data-message="Conejita moment #{{ 10 }}: You are my sunshine 🌼"
+            />
+            <img
+                src="{{ '/assets/pink_egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 11 | append: '.jpeg' | relative_url }}"
+                data-message="Conejita moment #{{ 11 }}: You are my sunshine 🌼"
+            />
+            <img
+                src="{{ '/assets/egg.png' | relative_url }}"
+                class="egg"
+                data-image="{{ '/assets/photo' | append: 12 | append: '.jpeg' | relative_url }}"
+                data-message="Conejita moment #{{ 12 }}: You are my sunshine 🌼"
+            />
+        </div>
 
-  <!-- Modal -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeModal">&times;</span>
-      <img id="modalImage" src="" alt="Surprise image" />
-      <p id="modalText"></p>
-    </div>
-  </div>
+        <!-- Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <img id="modalImage" src="" alt="Surprise image" />
+                <p id="modalText"></p>
+            </div>
+        </div>
 
-  <script>
-    const eggs = document.querySelectorAll('.egg');
-    const grid = document.getElementById('eggGrid');
-    const gridWidth = grid.offsetWidth;
-    const gridHeight = grid.offsetHeight;
+        <script>
+        const eggs = document.querySelectorAll('.egg');
+        const grid = document.getElementById('eggGrid');
+        const gridWidth = grid.offsetWidth;
+        const gridHeight = grid.offsetHeight;
 
-    const modal = document.getElementById('modal');
-    const modalImage = document.getElementById('modalImage');
-    const modalText = document.getElementById('modalText');
-    const closeModal = document.getElementById('closeModal');
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modalImage');
+        const modalText = document.getElementById('modalText');
+        const closeModal = document.getElementById('closeModal');
 
-    eggs.forEach((egg, i) => {
-      // Resize dynamically
-      egg.style.width = Math.floor(gridWidth / 8) + 'px';
+        eggs.forEach((egg, i) => {
+            // Resize dynamically
+            egg.style.width = Math.floor(gridWidth / 8) + 'px';
 
-      // Grid positioning
-      const col = i % 4;
-      const row = Math.floor(i / 4);
-      const x = (((col - 1.5) * (gridWidth / 4)) - 140) + 'px';
-      const y = (((row - 1) * (gridHeight / 3)) - 100) + 'px';
+            // Grid positioning
+            const col = i % 4;
+            const row = Math.floor(i / 4);
+            const x = (((col - 1.5) * (gridWidth / 4)) - 140) + 'px';
+            const y = (((row - 1) * (gridHeight / 3)) - 100) + 'px';
 
-      egg.style.setProperty('--x', x);
-      egg.style.setProperty('--y', y);
+            egg.style.setProperty('--x', x);
+            egg.style.setProperty('--y', y);
 
-      setTimeout(() => {
-        egg.classList.add('visible');
-      }, 200 + i * 100);
+            setTimeout(() => {
+                egg.classList.add('visible');
+            }, 200 + i * 100);
 
-      // Pop-up on click
-      egg.addEventListener('click', () => {
-        modalImage.src = egg.getAttribute('data-image');
-        modalText.textContent = egg.getAttribute('data-message');
-        modal.style.display = 'flex';
-      });
-    });
+            // Pop-up on click
+            egg.addEventListener('click', () => {
+                modalImage.src = egg.getAttribute('data-image');
+                modalText.textContent = egg.getAttribute('data-message');
+                modal.style.display = 'flex';
 
-    // Close modal
-    closeModal.addEventListener('click', () => {
-      modal.style.display = 'none';
-      modalImage.src = 'none';
-      modalText.textContent = 'none';
-    });
+                if (!egg.classList.contains('opened')) {
+                    egg.src = "{{ '/assets/egg-open.png' | relative_url }}";
+                    egg.classList.add('opened');
+                }
+            });
+        });
 
-    // Click outside modal to close
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-        modalImage.src = 'none';
-        modalText.textContent = 'none';
-      }
-    });
-  </script>
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalImage.src = 'none';
+            modalText.textContent = 'none';
+        });
 
-</body>
+        // Click outside modal to close
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modalImage.src = 'none';
+                modalText.textContent = 'none';
+            }
+        });
+        </script>
+
+    </body>
 </html>
 <!---->
