@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <style>
+    body {
+      background-color: #fff8c6;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .golden-egg {
+      width: 300px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .golden-egg:hover {
+      transform: scale(1.05);
+    }
+
+    .letter {
+      max-width: 600px;
+      margin-top: 30px;
+      padding: 20px;
+      font-size: 1.2em;
+      line-height: 1.6;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      display: none;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="goldenEgg" class="golden-egg" src="{{ '/assets/golden-egg.png' | relative_url }}" alt="Golden Egg" />
+
+  <div class="letter" id="letterBox"></div>
+
+  <script>
+    const goldenEgg = document.getElementById('goldenEgg');
+    const letterBox = document.getElementById('letterBox');
+
+    const letterText = `
+Hola conejota 🐰
+
+For all your hard work opening the chocolates, you get the GOLDEN ONE.
+
+All of these little chocolates, all of the little memories, are really so so so sweet.
+
+Listen, I really don't know what the future holds for us, at all, but I am truly grateful 
+to have had you in my life, and not being able to hide little chocolates for you to search  
+like we did last year was killing me. 
+
+You are good, you are doing good, and you truly have fought for it, 
+good fucking stuff conjeisima.
+
+Hopefuly I will see you soon ;)
+
+Siempre con amor,
+David
+`;
+
+    let typed = '';
+    let index = 0;
+
+    goldenEgg.addEventListener('click', () => {
+      goldenEgg.src = "{{ '/assets/golden-egg-cracked.png' | relative_url }}";
+      letterBox.style.display = 'block';
+
+      const typeWriter = () => {
+        if (index < letterText.length) {
+          typed += letterText.charAt(index);
+          letterBox.textContent = typed;
+          index++;
+          setTimeout(typeWriter, 40);
+        }
+      };
+
+      setTimeout(typeWriter, 500);
+    });
+  </script>
+
+</body>
+</html>
+

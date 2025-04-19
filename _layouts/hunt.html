@@ -111,7 +111,7 @@
                 data-image="{{ '/assets/photo' | append: 2 | append: '.jpeg' | relative_url }}"
                 data-message="6 May 2024: Insane opportunity for me to remind you that I 
                 DONT forget we still need to watch the last 3 Starwars ;)
-                (We will need at least two liters of Soju tho, ONLY WAY TO MAKE THEM BAREBLE TO WATCH THOSE IM AFRIAD)"
+                (We will need at least two liters of Soju tho, ONLY WAY TO MAKE THEM BAREBLE TO WATCH, IM AFRIAD)"
             />
             <img
                 src="{{ '/assets/blue_egg.png' | relative_url }}"
@@ -208,6 +208,8 @@
         const modalText = document.getElementById('modalText');
         const closeModal = document.getElementById('closeModal');
 
+        var openedCount = 0;
+
         eggs.forEach((egg, i) => {
             // Resize dynamically
             egg.style.width = Math.floor(gridWidth / 8) + 'px';
@@ -234,12 +236,18 @@
                 if (!egg.classList.contains('opened')) {
                     egg.src = "{{ '/assets/egg-open.png' | relative_url }}";
                     egg.classList.add('opened');
+                    openedCount++;
                 }
             });
         });
 
         // Close modal
         closeModal.addEventListener('click', () => {
+            if(openedCount === 12) {
+                setTimeout(() => {
+                    window.location.href = '{{ site.baseurl }}/reward';
+                }, 1000); // Small delay for the animation
+            }
             modal.style.display = 'none';
             modalImage.src = 'none';
             modalText.textContent = 'none';
@@ -248,6 +256,11 @@
         // Click outside modal to close
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
+                if(openedCount === 12) {
+                    setTimeout(() => {
+                        window.location.href = '{{ site.baseurl }}/reward';
+                    }, 1000); // Small delay for the animation
+                }
                 modal.style.display = 'none';
                 modalImage.src = 'none';
                 modalText.textContent = 'none';
