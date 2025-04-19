@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Egg Hunt 🐣</title>
+  <style>
+    body {
+      background-color: #fff8c6;
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .grid {
+      position: relative;
+      width: 600px;
+      height: 800px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .egg {
+      width: 80px;
+      height: 100px;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.2);
+      transition: all 1s ease;
+    }
+
+    .egg.visible {
+      opacity: 1;
+      transform: translate(var(--x), var(--y)) scale(1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid" id="eggGrid">
+    <!-- 12 Eggs -->
+    <!-- We'll dynamically position them using JS -->
+    <!-- You can use any egg image you like -->
+    <!-- For example: /assets/egg1.png -->
+    <!-- Use different images if you want variety -->
+    <!-- All will fly outward from the center -->
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+    <img src="{{ site.baseurl }}/assets/egg.png" class="egg" />
+  </div>
+
+  <script>
+    const eggs = document.querySelectorAll('.egg');
+    const grid = document.getElementById('eggGrid');
+    const gridWidth = grid.offsetWidth;
+    const gridHeight = grid.offsetHeight;
+
+    eggs.forEach((egg, i) => {
+      const col = i % 3;
+      const row = Math.floor(i / 3);
+
+      // Calculate position relative to grid center
+      const x = ((col - 1) * (gridWidth / 3)) + 'px';
+      const y = ((row - 1.5) * (gridHeight / 4)) + 'px';
+
+      // Set as CSS variable
+      egg.style.setProperty('--x', x);
+      egg.style.setProperty('--y', y);
+
+      // Stagger the animation for a cooler effect
+      setTimeout(() => {
+        egg.classList.add('visible');
+      }, 200 + i * 100); // delay each egg
+    });
+  </script>
+
+</body>
+</html>
+
