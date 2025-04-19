@@ -65,8 +65,8 @@
       const row = Math.floor(i / 4);
 
       // Calculate position relative to grid center
-      const x = (((col - 1.5) * (gridWidth / 4)) - 20) + 'px';
-      const y = ((row - 1) * (gridHeight / 3)) + 'px';
+      const x = (((col - 1.5) * (gridWidth / 4)) - 40) + 'px';
+      const y = (((row - 1) * (gridHeight / 3)) - 40) + 'px';
 
       egg.style.setProperty('--x', x);
       egg.style.setProperty('--y', y);
