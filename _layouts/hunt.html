@@ -62,13 +62,13 @@
 
     eggs.forEach((egg, i) => {
       //console.log(gridWidth);
-      egg.style.width = (Math.floor(gridWidth / 8) - 20) + 'px';
+      egg.style.width = (Math.floor(gridWidth / 8)) + 'px';
       const col = i % 4;
       const row = Math.floor(i / 4);
 
       // Calculate position relative to grid center
-      const x = (((col - 1.5) * (gridWidth / 4)) - 40) + 'px';
-      const y = (((row - 1) * (gridHeight / 3)) - 40) + 'px';
+      const x = (((col - 1.5) * (gridWidth / 4)) - 80) + 'px';
+      const y = (((row - 1) * (gridHeight / 3)) - 80) + 'px';
 
       egg.style.setProperty('--x', x);
       egg.style.setProperty('--y', y);
