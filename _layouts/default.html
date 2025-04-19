@@ -24,7 +24,7 @@
     .chest {
       cursor: pointer;
       transition: transform 0.4s ease;
-      width: 200px;
+      width: 500px;
     }
 
     .chest:active {
@@ -43,11 +43,11 @@
 
     chest.addEventListener('click', () => {
         chest.src = '{{ site.baseurl }}/assets/chest-open.png'; // Swap to open chest image
-      chest.style.transform = 'scale(1.1)';
+      chest.style.transform = 'scale(1.5)';
       
       setTimeout(() => {
         window.location.href = '/hunt.html'; // Redirect to egg hunt page
-      }, 3000); // Small delay for the animation
+      }, 1000); // Small delay for the animation
     });
   </script>
 
