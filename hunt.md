@@ -1,5 +1,5 @@
 ---
 layout: hunt
-title: Egg Hunt
+title: Camcam's Paques
 permalink: /hunt/
 ---
